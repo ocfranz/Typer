@@ -77,7 +77,7 @@
   "scripts": {
     "server": "node app.js",
     "prod:build": "webpack --config ./webpack.prod.js",
-    "start": "npm run prod:build && npm run server",
+    "start": "npm run server",
     "dev:start": "concurrently \"npm run dev:build\" \"npm run dev:server\"",
     "dev:server": "nodemon app.js --exec babel-node",
     "dev:build": "webpack --open --config ./webpack.dev.js --inline "

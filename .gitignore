@@ -81,7 +81,7 @@ typings/
 .next
 
 # Dist files
-src/public
+# src/public
 
 # Nuxt.js build / generate output
 .nuxt
