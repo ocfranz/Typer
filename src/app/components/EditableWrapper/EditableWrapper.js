@@ -19,6 +19,11 @@ const EditableWrapper = styled.div`
             line-height: 1.5em;
         `
     }
+    ${props => 
+        props.type == "bullet" && css`
+            display: flex;
+        `
+    }
 `;
 
 EditableWrapper.defaultProps = {

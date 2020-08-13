@@ -5,8 +5,8 @@ import Editable from '../../components/Editable';
 import EditableWrapper from '../../components/EditableWrapper';
 import NotebookStyled from './NotebookStyled';
 import NotebookWrapper from './NotebookWrapper';
-
-
+import BulletIcon from '../../components/BulletIcon';
+import requestFocus from '../../helpers/requestFocus';
 const Notebook = ({})=>{
     const firstEditable = useRef(null);
 
@@ -67,12 +67,6 @@ const Notebook = ({})=>{
         }
     }
 
-    const requestFocus = (event) =>{
-        if(event.target instanceof Element){
-            event.target.children[0].focus();
-        }
-    }
-
     const moveCursorToEnd = (el)=>{
         if(el.innerText == ""){
             el.focus();
@@ -126,6 +120,22 @@ const Notebook = ({})=>{
             
             event.target.parentNode.parentNode.insertBefore(newLine.children[0], target.parentNode.nextSibling);
 
+            target.parentNode.parentNode.removeChild(target.parentNode);
+        }
+        if(target.textContent == ":ul"){
+            const { target } = event;
+            let newLine = document.createElement('div');
+            const stringComponent = renderToString(<EditableWrapper type="bullet">
+                                                        <BulletIcon />
+                                                        <Editable  onKeyDown={(event)=>{handleEditableKeyDown(event)}} placeholder={"Subtitle"}></Editable>
+                                                    </EditableWrapper>);
+
+            newLine.innerHTML = stringComponent;
+            
+            newLine.children[0].children[1].addEventListener('keydown', (event)=>handleEditableKeyDown(event));
+            newLine.children[0].children[1].addEventListener('input', (event)=>handleEditableOnInput(event));
+            
+            event.target.parentNode.parentNode.insertBefore(newLine.children[0], target.parentNode.nextSibling);
             target.parentNode.parentNode.removeChild(target.parentNode);
         }
     }
