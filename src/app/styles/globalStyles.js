@@ -1,9 +1,39 @@
 import { createGlobalStyle } from "styled-components";
 
+import GilroyBoldWoff from '../assets/fonts/Gilroy-Bold.woff';
+import GilroyBoldWoff2 from '../assets/fonts/Gilroy-Bold.woff2';
+import GilroyLightWoff from '../assets/fonts/Gilroy-Light.woff';
+import GilroyLightWoff2 from '../assets/fonts/Gilroy-Light.woff2'; 
+import GilroyRegularWoff from '../assets/fonts/Gilroy-Regular.woff'; 
+import GilroyRegularWoff2 from '../assets/fonts/Gilroy-Regular.woff2'; 
 
-//@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;500;700&display=swap');
 const GlobalStyles = createGlobalStyle`
-    
+    @font-face {
+        font-family: 'Gilroy';
+        src: url(${GilroyRegularWoff2}) format('woff2'),
+            url(${GilroyRegularWoff}) format('woff');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        src: url(${GilroyLightWoff2}) format('woff2'),
+            url(${GilroyLightWoff}) format('woff');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Gilroy';
+        src: url(${GilroyBoldWoff2}) format('woff2'),
+            url(${GilroyBoldWoff}) format('woff');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
 
     body, html{
         border : 0;
@@ -21,9 +51,8 @@ const GlobalStyles = createGlobalStyle`
         transition:  background-color 0.5s linear;
     }
     
-    
     *{
-        font-family: 'Muli', sans-serif;
+        font-family: 'Gilroy';
     }
     [contenteditable][placeholder]:empty:before {
         content: attr(placeholder);

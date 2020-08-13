@@ -31,7 +31,6 @@ Brand.defaultProps = {
 
 Brand.propTypes = {
     children : PropTypes.string,
-    handleOnClick : PropTypes.func.isRequired
 }
 
 export default Brand;
