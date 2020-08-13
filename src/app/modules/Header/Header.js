@@ -13,7 +13,7 @@ const Header = ({onClickToogleTheme})=>{
     return(
         <HeaderStyled>
             <HeaderWrapper>
-                <Brand handleOnClick={handleBrandClick} ></Brand>
+                <Brand ></Brand>
                 <button onClick={onClickToogleTheme}>Change teme</button>
             </HeaderWrapper>
         </HeaderStyled>
