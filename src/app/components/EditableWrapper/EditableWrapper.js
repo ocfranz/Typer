@@ -6,7 +6,7 @@ const EditableWrapper = styled.div`
     ${props => 
         props.type == "heading" && css`
             padding : 2px 0px 2px 0px;
-            font-size : 24px;
+            font-size: 1.5em;
             font-weight: 700;
             line-height: 1.5em;
         `
@@ -14,7 +14,7 @@ const EditableWrapper = styled.div`
     ${props => 
         props.type == "heading-two" && css`
             padding : 2px 0px 2px 0px;
-            font-size : 18px;
+            font-size: 1em;
             font-weight: 700;
             line-height: 1.5em;
         `
