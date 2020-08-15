@@ -38,9 +38,20 @@ const CommandPaletteItem = styled.div`
 `;
 
 const CommandPalettes = ({})=>{
+    const [ visible, setVisible ] = useState(false);
+    const ref = useRef(null);
 
+    useEffect(()=>{
+        document.addEventListener('click', handleClickOutside, true )
+    }, [])
+
+    const handleClickOutside = (event)=>{
+        if(!ref.current.contains(event.target)){
+            console.log('Click outside');
+        }
+    }
     return(
-        <CommandPaletteWrapper>
+        <CommandPaletteWrapper ref={ref}>
             <CommandPaletteItem type="text">Text</CommandPaletteItem>
             <CommandPaletteItem type="heading">H1</CommandPaletteItem>
             <CommandPaletteItem type="heading-two">H2</CommandPaletteItem>
