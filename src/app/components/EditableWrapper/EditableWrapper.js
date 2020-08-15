@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const EditableWrapper = styled.div`
     padding: 1px 1px;
+    position : relative;
     ${props => 
         props.type == "heading" && css`
             padding : 2px 0px 2px 0px;

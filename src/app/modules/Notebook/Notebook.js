@@ -6,7 +6,9 @@ import EditableWrapper from '../../components/EditableWrapper';
 import NotebookStyled from './NotebookStyled';
 import NotebookWrapper from './NotebookWrapper';
 import BulletIcon from '../../components/BulletIcon';
+import CommandPalette from '../../components/CommandPalette';
 import requestFocus from '../../helpers/requestFocus';
+
 const Notebook = ({})=>{
     const firstEditable = useRef(null);
 
@@ -145,6 +147,7 @@ const Notebook = ({})=>{
             <NotebookWrapper>
                 <EditableWrapper type="heading">
                     <Editable ref={firstEditable}   onKeyDown={(event)=>{handleEditableKeyDown(event)}}  onInput={(event) => {handleEditableOnInput(event)}} placeholder={"Title"}></Editable>
+                    <CommandPalette></CommandPalette>
                 </EditableWrapper>
             </NotebookWrapper>
         </NotebookStyled>

@@ -2,23 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const ThemeIconStyled = styled.a`
+const IconStyled = styled.a`
     width : 30px;
     height : 30px;
     cursor : pointer;
+    margin : 0px 5px;
 `;
 
-const ThemeIcon = ({handleOnClick, children})=>{
+const Icon = ({handleOnClick, children})=>{
     
     return(
-        <ThemeIconStyled onClick={handleOnClick}>
+        <IconStyled onClick={handleOnClick}>
            {children}
-        </ThemeIconStyled>
+        </IconStyled>
     );
 }
-ThemeIcon.propTypes = {
+Icon.propTypes = {
     handleOnClick : PropTypes.func,
     children : PropTypes.any
 }
 
-export default ThemeIcon;
+export default Icon;
