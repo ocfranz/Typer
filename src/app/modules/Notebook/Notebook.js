@@ -141,13 +141,11 @@ const Notebook = ({})=>{
             target.parentNode.parentNode.removeChild(target.parentNode);
         }
     }
-    
     return(
         <NotebookStyled id="notebook">
             <NotebookWrapper>
                 <EditableWrapper type="heading">
                     <Editable ref={firstEditable}   onKeyDown={(event)=>{handleEditableKeyDown(event)}}  onInput={(event) => {handleEditableOnInput(event)}} placeholder={"Title"}></Editable>
-                    <CommandPalette></CommandPalette>
                 </EditableWrapper>
             </NotebookWrapper>
         </NotebookStyled>
