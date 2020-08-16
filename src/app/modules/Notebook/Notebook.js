@@ -17,55 +17,55 @@ const Notebook = ({})=>{
     }, [])
 
     const handleEditableKeyDown = (event)=>{
-        if(event.keyCode == 13){
-            event.preventDefault();
-            const {target} = event;
-            const lastChild = document.querySelector('#notebook').lastChild;
-            let newLine = document.createElement('div');
-            let addedComponent = null;
-           
-
-            const stringComponent = renderToString(<EditableWrapper >
-                                                        <Editable  onKeyDown={(event)=>{handleEditableKeyDown(event)}}></Editable>
-                                                    </EditableWrapper>);
-
-            newLine.innerHTML = stringComponent;
-            newLine.children[0].addEventListener('keydown', (event)=>handleEditableKeyDown(event));
-            newLine.children[0].addEventListener('input', (event)=>handleEditableOnInput(event));
-      
-            if(target.parentNode.parentNode.addEventListener){
-                target.parentNode.parentNode.addEventListener('DOMNodeInserted',requestFocus, false);
-            }
-           
-            if(target.parentNode == lastChild){
-                target.parentNode.parentNode.appendChild(newLine.children[0]);
-            }else{
-                target.parentNode.parentNode.insertBefore(newLine.children[0], target.parentNode.nextSibling);   
-            }
-
-            target.parentNode.parentNode.removeEventListener('DOMNodeInserted', (event)=>{});
-        }
-        if(event.keyCode == 8){
-            let {target} = event;
-            if(target.innerText == ""){
-                if( document.querySelector('#notebook').firstChild.children[0] != event.target){
-                    moveCursorToEnd(target.parentNode.previousSibling.children[0]);
-                    target.parentNode.parentNode.removeChild(target.parentNode);
+        switch(event.keyCode) {
+            case 13:
+                event.preventDefault();
+                const { target } = event;
+                const lastChild = document.querySelector('#notebook').lastChild;
+                let newLine = document.createElement('div');
+                let addedComponent = null;
+                const stringComponent = renderToString(<EditableWrapper >
+                                                            <Editable  onKeyDown={(event)=>{handleEditableKeyDown(event)}}></Editable>
+                                                        </EditableWrapper>);
+                newLine.innerHTML = stringComponent;
+                newLine.children[0].addEventListener('keydown', (event)=>handleEditableKeyDown(event));
+                newLine.children[0].addEventListener('input', (event)=>handleEditableOnInput(event));
+        
+                if(target.parentNode.parentNode.addEventListener){
+                    target.parentNode.parentNode.addEventListener('DOMNodeInserted',requestFocus, false);
                 }
-            }
-        }
-        if(event.keyCode == 38){
-            if( document.querySelector('#notebook').firstChild.children[0] != event.target){
-                event.preventDefault();
-                moveCursorToEnd(event.target.parentNode.previousSibling.childNodes[0]);
-            }
             
-        }
-        if(event.keyCode == 40){
-            if( document.querySelector('#notebook').lastChild.children[0] != event.target){
-                event.preventDefault();
-                moveCursorToEnd(event.target.parentNode.nextSibling.childNodes[0]);
-            }   
+                if(target.parentNode == lastChild){
+                    target.parentNode.parentNode.appendChild(newLine.children[0]);
+                }else{
+                    target.parentNode.parentNode.insertBefore(newLine.children[0], target.parentNode.nextSibling);   
+                }
+                target.parentNode.parentNode.removeEventListener('DOMNodeInserted', (event)=>{});
+                break;
+            case 8 :
+                let {target} = event;
+                if(target.innerText == ""){
+                    if( document.querySelector('#notebook').firstChild.children[0] != event.target){
+                        moveCursorToEnd(target.parentNode.previousSibling.children[0]);
+                        target.parentNode.parentNode.removeChild(target.parentNode);
+                    }
+                }
+                break;
+            case 38 :
+                if( document.querySelector('#notebook').firstChild.children[0] != event.target){
+                    event.preventDefault();
+                    moveCursorToEnd(event.target.parentNode.previousSibling.childNodes[0]);
+                }
+                break;  
+                
+            case 40 :
+                if( document.querySelector('#notebook').lastChild.children[0] != event.target){
+                    event.preventDefault();
+                    moveCursorToEnd(event.target.parentNode.nextSibling.childNodes[0]);
+                } 
+                break;  
+            default :
+                throw new Error('Editable event handler');
         }
     }
 
