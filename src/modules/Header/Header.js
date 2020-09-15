@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
 import Brand from "../../components/Brand";
 import Icon from "../../components/Icon";
+import { TOGGLE_THEME } from "../../actions/types";
 import { HeaderStyled, HeaderWrapper } from "./styles";
 import MoonIcon from "./MoonOutline.js";
 import SunIcon from "./SunOutline.js";
 import MoreVerticalIcon from "./MoreVertical.js";
 import { lightTheme, darkTheme } from "../../styles/themes.js";
 
-const Header = ({ onClickToggleTheme }) => {
-  const [darkActive, setDarkActive] = useState(false);
-
+const Header = (props) => {
+  const theme = useSelector((state) => state.uiReducer.theme);
+  const dispatch = useDispatch();
+  const [darkActive, setDarkActive] = useState(theme === "light");
   const handleOnSwitchTheme = () => {
     setDarkActive(!darkActive);
-    onClickToggleTheme();
+    dispatch({ type: TOGGLE_THEME, action: darkActive ? "light" : "dark" });
   };
   return (
     <HeaderStyled>
