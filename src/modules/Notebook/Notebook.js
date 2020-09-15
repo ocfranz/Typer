@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { renderToString } from "react-dom/server";
 
 import Editable from "../../components/Editable";
 import EditableWrapper from "../../components/EditableWrapper";
-import NotebookStyled from "./NotebookStyled";
-import NotebookWrapper from "./NotebookWrapper";
+import { NotebookStyled, NotebookWrapper } from "./style";
 import BulletIcon from "../../components/BulletIcon";
-import CommandPalette from "../../components/CommandPalette";
 import requestFocus from "../../helpers/requestFocus";
 
 const Notebook = ({}) => {
@@ -23,7 +21,6 @@ const Notebook = ({}) => {
         let { target } = event;
         const lastChild = document.querySelector("#notebook").lastChild;
         let newLine = document.createElement("div");
-        let addedComponent = null;
         const stringComponent = renderToString(
           <EditableWrapper>
             <Editable
@@ -101,7 +98,7 @@ const Notebook = ({}) => {
   };
 
   const moveCursorToEnd = (el) => {
-    if (el.innerText == "") {
+    if (el.innerText === "") {
       el.focus();
     } else {
       if (el.innerText && document.createRange) {

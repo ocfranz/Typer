@@ -31,7 +31,7 @@ const Home = ({}) => {
                 </Helmet>
                 <GlobalStyles />
                 <HomeStyled>
-                    <Header onClickToogleTheme={handleToggleTheme}></Header>
+                    <Header onClickToggleTheme={handleToggleTheme}></Header>
                     <Notebook></Notebook>
                 </HomeStyled>
             </>
