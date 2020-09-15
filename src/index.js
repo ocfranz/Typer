@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
-import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
+
 import App from "./App";
 import { store } from "./stores/store";
+import * as serviceWorker from "./serviceWorker";
+
 ReactDOM.render(
   <React.StrictMode>
     <Helmet>
